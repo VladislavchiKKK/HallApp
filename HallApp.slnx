@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="HallAPI/HallAPI.csproj" />
+  <Project Path="HallApp.BusinessLogic/HallApp.BusinessLogic.csproj" />
+  <Project Path="HallApp.Entities/HallApp.Entities.csproj" />
+  <Project Path="HallApp.Infrastructure/HallApp.Infrastructure.csproj" />
 </Solution>
