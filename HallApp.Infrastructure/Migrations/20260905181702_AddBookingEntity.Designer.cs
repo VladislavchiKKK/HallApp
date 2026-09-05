@@ -4,6 +4,7 @@ using HallApp.Infrastructure.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HallApp.Infrastructure.Migrations
 {
     [DbContext(typeof(HallAppDbContext))]
-    partial class HallAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260905181702_AddBookingEntity")]
+    partial class AddBookingEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +64,7 @@ namespace HallApp.Infrastructure.Migrations
 
                     b.HasIndex("HallId");
 
-                    b.ToTable("BookingEntities");
+                    b.ToTable("BookingEntity");
                 });
 
             modelBuilder.Entity("HallApp.Entities.DatabaseEntities.HallEntity", b =>
@@ -183,7 +186,7 @@ namespace HallApp.Infrastructure.Migrations
             modelBuilder.Entity("HallApp.Entities.DatabaseEntities.BookingEntity", b =>
                 {
                     b.HasOne("HallApp.Entities.DatabaseEntities.HallEntity", "HallEntity")
-                        .WithMany()
+                        .WithMany("BookingEntities")
                         .HasForeignKey("HallId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -204,6 +207,11 @@ namespace HallApp.Infrastructure.Migrations
                         .HasForeignKey("ServiceEntitiesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HallApp.Entities.DatabaseEntities.HallEntity", b =>
+                {
+                    b.Navigation("BookingEntities");
                 });
 #pragma warning restore 612, 618
         }

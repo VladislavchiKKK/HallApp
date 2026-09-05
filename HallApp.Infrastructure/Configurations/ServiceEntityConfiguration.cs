@@ -11,9 +11,6 @@ public class ServiceEntityConfiguration : IEntityTypeConfiguration<ServiceEntity
         builder.HasKey(s => s.Id);
         builder.Property(s => s.Name).IsRequired();
 
-        builder.HasMany(s => s.HallEntities)
-               .WithMany(h => h.ServiceEntities);
-
         builder.HasData(
             new ServiceEntity { Id = 1, Name = "Projector", Price = 500 },
             new ServiceEntity { Id = 2, Name = "Wi-Fi", Price = 300 },

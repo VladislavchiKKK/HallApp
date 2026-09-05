@@ -18,5 +18,7 @@ public class HallAppDbContext : DbContext
     public DbSet<HallEntity> HallEntities { get; set; }
 
     public DbSet<ServiceEntity> ServiceEntities { get; set; }
+
+    public DbSet<BookingEntity> BookingEntities { get; set; }
 }
 

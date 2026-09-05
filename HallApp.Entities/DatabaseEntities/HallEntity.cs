@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HallApp.Entities.DatabaseEntities;
+﻿namespace HallApp.Entities.DatabaseEntities;
 
 public class HallEntity : BaseEntity
 {
@@ -12,5 +8,5 @@ public class HallEntity : BaseEntity
 
     public decimal PricePerHour { get; set; }
 
-    public IEnumerable<ServiceEntity>? ServiceEntities { get; set; }
+    public ICollection<ServiceEntity> ServiceEntities { get; set; } = [];
 }
